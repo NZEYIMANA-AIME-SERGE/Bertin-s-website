@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WISD. SCIENCE ACADEMY | Kayonza, Rwanda</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            navy: '#1e293b',
+                            cyan: '#06b6d4',
+                            emerald: '#059669',
+                            gold: '#f59e0b',
+                            accent: '#3b82f6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 20%, rgba(6, 182, 212, 0.15) 0%, rgba(15, 23, 42, 0.95) 70%),
+                        linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px rgba(5, 150, 105, 0.3);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+        /* Calm, light interface palette */
+        body { background: #f1f5f9 !important; color: #1e293b !important; }
+        header { background: rgba(255,255,255,.96) !important; border-color: #dbe3ee !important; }
+        footer { background: #e8eef6 !important; border-color: #d6dfeb !important; }
+        .hero-gradient { background: radial-gradient(circle at 50% 15%, #d8f3f4 0%, #eef7fb 48%, #e8eef6 100%) !important; }
+        .glass-card { background: rgba(255,255,255,.94) !important; border-color: #dbe3ee !important; color: #334155; backdrop-filter: blur(8px); }
+        .glass-card-light { background: #fff; border-color: #dbe3ee; }
+        .bg-slate-950 { background-color: #f8fafc !important; }
+        .bg-slate-900 { background-color: #fff !important; }
+        .bg-slate-800 { background-color: #eef2f7 !important; }
+        .bg-slate-900\/60 { background-color: rgba(241,245,249,.9) !important; }
+        .bg-slate-800\/80, .bg-slate-800\/90 { background-color: rgba(241,245,249,.95) !important; }
+        .bg-cyan-950\/10 { background-color: #ecfeff !important; }
+        .bg-cyan-950\/80 { background-color: #cffafe !important; }
+        .bg-emerald-950 { background-color: #dcfce7 !important; }
+        .bg-cyan-950 { background-color: #cffafe !important; }
+        .bg-amber-950 { background-color: #fef3c7 !important; }
+        .bg-indigo-950 { background-color: #e0e7ff !important; }
+        .bg-emerald-950\/60, .bg-emerald-950\/80 { background-color: #dcfce7 !important; }
+        .from-emerald-950\/60 { background-image: none !important; background-color: #f0fdf4 !important; }
+        .to-slate-900 { --tw-gradient-to: #f8fafc var(--tw-gradient-to-position) !important; }
+        .bg-slate-950\/60, .bg-slate-950\/80 { background-color: rgba(241,245,249,.92) !important; }
+        .text-white, .text-slate-100, .text-slate-200 { color: #172b4d !important; }
+        .text-slate-300 { color: #334155 !important; }
+        .text-slate-400, .text-slate-500 { color: #64748b !important; }
+        .bg-cyan-600, .bg-emerald-600, .bg-rose-500 { color: #fff !important; }
+        .border-slate-800, .border-slate-700 { border-color: #d5deea !important; }
+        .hero-gradient .text-white, .hero-gradient .text-slate-100, .hero-gradient .text-slate-200 { color: #172b4d !important; }
+        #coaching { background: linear-gradient(110deg,#e4f5ec,#f1f5f9,#e2f6f8) !important; border-color: #dbe3ee !important; }
+        .page-banner { background: linear-gradient(120deg,#e0f2fe,#ecfdf5); border-bottom: 1px solid #dbe3ee; }
+        #adminPanel { background: #f1f5f9 !important; border-color: #dbe3ee !important; }
+        #adminPanel .glass-card { box-shadow: 0 8px 24px rgba(15,23,42,.05); }
+        .page-section { scroll-margin-top: 6rem; }
+    </style>
+</head>
+    <body class="bg-slate-100 text-slate-800 font-sans antialiased selection:bg-cyan-500 selection:text-white min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Title -->
+                <a href="/" aria-label="WISD Science Academy home" class="flex items-center gap-3 group shrink-0">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-500 via-emerald-500 to-amber-400 p-0.5 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                            <i class="fa-solid fa-atom text-cyan-400 text-2xl group-hover:rotate-180 transition-transform duration-700"></i>
+                        </div>
+                    </div>
+                    <div class="leading-tight">
+                        <span class="block text-2xl sm:text-[27px] font-black tracking-[0.08em] text-slate-900">WISD</span>
+                        <span class="block text-[10px] sm:text-[11px] font-extrabold tracking-[0.16em] text-cyan-800">SCIENCE ACADEMY</span>
+                        <span class="hidden sm:block text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">Nurturing Intelligence · Kayonza</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center gap-5 font-semibold text-sm text-slate-600">
+                    <a href="/" class="hover:text-cyan-700 transition-colors">Home</a>
+                    <a href="/programs" class="hover:text-cyan-700 transition-colors">Programs</a>
+                    <a href="/library" class="hover:text-cyan-700 transition-colors">Library</a>
+                    <a href="/community" class="hover:text-cyan-700 transition-colors">Community</a>
+                    <a href="/register" class="hover:text-cyan-700 transition-colors">Join</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="hidden sm:flex items-center">
+                    <a href="/register" class="bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-all shadow-lg hover:shadow-cyan-500/20 hover:scale-105">
+                        Register Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden p-2 text-slate-400 hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="/" class="block py-2 text-slate-700 hover:text-cyan-700">Home</a>
+            <a href="/programs" class="block py-2 text-slate-700 hover:text-cyan-700">Programs</a>
+            <a href="/library" class="block py-2 text-slate-700 hover:text-cyan-700">Digital Library</a>
+            <a href="/community" class="block py-2 text-slate-700 hover:text-cyan-700">Community</a>
+            <a href="/register" class="block py-2 text-slate-700 hover:text-cyan-700">Membership & Enrollment</a>
+            <div class="pt-4 border-t border-slate-800 flex flex-col gap-3">
+                <a href="tel:0727650086" class="flex items-center justify-center gap-2 bg-slate-800 text-cyan-400 py-3 rounded-xl font-bold">
+                    <i class="fa-solid fa-phone text-emerald-400"></i> Call: 0727650086
+                </a>
+                <a href="/register" class="text-center bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 py-3 rounded-xl font-bold">
+                    Register Student
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div id="pageBanner" class="page-banner hidden py-7">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p id="pageEyebrow" class="text-xs font-bold uppercase tracking-wider text-cyan-700"></p>
+            <h1 id="pageTitle" class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1"></h1>
+            <p id="pageDescription" class="text-sm text-slate-600 mt-2 max-w-3xl"></p>
+        </div>
+    </div>
+
+    <main class="flex-grow">
+        <section id="account" class="page-section hidden py-8 bg-slate-100 border-b border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+                    <h2 id="loginHeading" class="text-xl font-bold text-slate-900">Sign in</h2>
+                    <p id="loginDescription" class="text-sm text-slate-500 mt-1">Members sign in to join discussions. The administrator signs in to manage the academy.</p>
+                    <form id="loginForm" class="mt-4">
+                        <div class="grid sm:grid-cols-[1fr_1fr_auto] gap-3 items-end">
+                            <label id="loginPhoneLabel" class="w-full text-xs text-slate-600">Your phone number<input id="loginPhone" type="tel" required autocomplete="username" placeholder="e.g. 078 123 4567" class="block mt-1 w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                            <label class="w-full text-xs text-slate-600">Password<span class="mt-1 flex"><input id="loginPassword" type="password" required autocomplete="current-password" class="min-w-0 flex-1 bg-white border border-slate-300 rounded-l-lg px-3 py-2 text-sm"><button type="button" class="toggle-password border border-l-0 border-slate-300 rounded-r-lg px-3 text-slate-600" data-target="loginPassword" aria-label="Show password">Show</button></span></label>
+                            <button id="loginBtn" type="submit" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2.5 rounded-lg text-sm">Sign in</button>
+                        </div>
+                        <p id="loginMessage" role="status" aria-live="polite" class="text-sm text-rose-700 mt-3 min-h-5"></p>
+                        <p id="createAccountLink" class="text-sm text-slate-600 mt-3">New to WISD? <a href="/register" class="font-bold text-cyan-800 underline">Create a member or student account</a>.</p>
+                        <p class="text-xs text-slate-500 mt-2">Forgot your password? Contact WISD for account help at 0727650086.</p>
+                    </form>
+                    <div id="signedInPanel" class="hidden mt-4 rounded-xl bg-emerald-50 border border-emerald-200 p-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                            <p id="accountStatus" role="status" class="text-sm text-emerald-900 font-semibold"></p>
+                            <button id="logoutBtn" type="button" class="bg-white border border-slate-300 text-slate-700 font-semibold px-4 py-2 rounded-lg text-sm">Sign out</button>
+                        </div>
+                        <div id="accountNextStep" class="hidden mt-4 rounded-xl bg-white border border-emerald-200 p-4">
+                            <h3 id="accountNextTitle" class="font-bold text-slate-900"></h3>
+                            <p id="accountNextDescription" class="text-sm text-slate-600 mt-1"></p>
+                            <a id="accountNextLink" href="/" class="inline-flex mt-3 bg-cyan-700 hover:bg-cyan-800 text-white font-semibold px-4 py-2 rounded-lg text-sm"></a>
+                        </div>
+                        <form id="paymentRetryForm" class="hidden mt-4 grid sm:grid-cols-3 gap-3">
+                            <select id="retryPaymentKind" class="bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"><option value="member">Membership fee</option><option value="student">Student enrollment fee</option></select>
+                            <input id="retryTransaction" required placeholder="New transaction reference" class="bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm">
+                            <button class="bg-emerald-600 text-white font-bold px-4 py-2 rounded-lg text-sm">Resubmit payment</button>
+                        </form>
+                        <details class="mt-4 border-t border-emerald-200 pt-3">
+                            <summary class="cursor-pointer text-sm font-semibold text-slate-700">Change password</summary>
+                            <form id="changePasswordForm" class="grid sm:grid-cols-3 gap-3 mt-3">
+                                <label class="text-xs text-slate-600">Current password<input id="currentPassword" type="password" required autocomplete="current-password" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                                <label class="text-xs text-slate-600">New password (12+ characters)<input id="newPassword" type="password" required minlength="12" autocomplete="new-password" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                                <label class="text-xs text-slate-600">Confirm new password<input id="confirmPassword" type="password" required minlength="12" autocomplete="new-password" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                                <button class="sm:col-span-3 justify-self-start bg-slate-800 text-white font-semibold px-4 py-2 rounded-lg text-sm">Update password</button>
+                                <p id="passwordMessage" role="status" aria-live="polite" class="sm:col-span-3 text-sm"></p>
+                            </form>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- HERO SECTION -->
+        <section id="homeHero" class="page-section relative hero-gradient pt-12 pb-24 lg:pt-20 lg:pb-32 overflow-hidden">
+            <!-- Background Decorative Icons -->
+            <div class="absolute inset-0 pointer-events-none opacity-10 flex justify-between items-center px-10">
+                <i class="fa-solid fa-square-root-variable text-[180px] text-cyan-400 -translate-y-20"></i>
+                <i class="fa-solid fa-flask text-[200px] text-emerald-400 translate-y-10"></i>
+                <i class="fa-solid fa-brain text-[160px] text-amber-400 -translate-y-10"></i>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700 text-cyan-400 text-xs sm:text-sm font-semibold tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Kayonza Center of Academic Excellence • Rwanda
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                            Sharpen Your <span class="bg-gradient-to-r from-cyan-400 via-emerald-400 to-amber-300 bg-clip-text text-transparent">Intelligence</span> with World-Class Knowledge
+                        </h1>
+
+                        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Welcome to <strong>WISD. SCIENCE ACADEMY</strong>. We teach all branches of global knowledge with a specialized focus on <strong>Physics, Mathematics, and Philosophy</strong>. Combining theory, hands-on laboratory practice, and modern educational tools.
+                        </p>
+
+                        <!-- Highlights Pills -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2">
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-200 border border-slate-700/60 text-xs font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-microscope text-cyan-400"></i> Modern Lab Practice
+                            </span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-200 border border-slate-700/60 text-xs font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-pump-soap text-amber-400"></i> Soaps, Paints & Juice Making
+                            </span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-200 border border-slate-700/60 text-xs font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-book-bookmark text-emerald-400"></i> Unlimited Book Repository
+                            </span>
+                            <span class="px-3 py-1.5 rounded-lg bg-slate-800/90 text-slate-200 border border-slate-700/60 text-xs font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-graduation-cap text-amber-400"></i> Primary & Secondary Coaching
+                            </span>
+                        </div>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                            <a href="#register" class="bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-xl hover:shadow-cyan-500/25 flex items-center justify-center gap-2 group">
+                                <span>Enroll Now / Register</span>
+                                <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#subjects" class="bg-slate-800/80 hover:bg-slate-800 text-white border border-slate-700 font-semibold px-8 py-4 rounded-xl text-base transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-compass text-cyan-400"></i>
+                                <span>Explore Subjects</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Card -->
+                    <div class="lg:col-span-5">
+                        <div class="relative glass-card p-6 sm:p-8 rounded-3xl glow-cyan">
+                            <div class="absolute -top-4 -right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-extrabold text-xs px-4 py-1.5 rounded-full shadow-md uppercase tracking-wider">
+                                Kayonza • Rwanda
+                            </div>
+
+                            <div class="space-y-6">
+                                <div class="flex items-center gap-4 border-b border-slate-700/60 pb-4">
+                                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                                        <i class="fa-solid fa-atom"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white">WISD. Center</h3>
+                                        <p class="text-xs text-slate-400">Empowering Minds Through Universal Knowledge</p>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                        <span class="text-xs text-slate-300 font-medium"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> Direct Helpline</span>
+                                        <span class="text-sm font-bold text-cyan-400">0727650086</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                        <span class="text-xs text-slate-300 font-medium"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Campus Location</span>
+                                        <span class="text-sm font-bold text-slate-200">Kayonza District</span>
+                                    </div>
+                                    <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                                        <span class="text-xs text-slate-300 font-medium"><i class="fa-solid fa-flask-vial text-cyan-400 mr-2"></i> Practical Training</span>
+                                        <span class="text-xs font-semibold px-2 py-1 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">Modern Lab Included</span>
+                                    </div>
+                                </div>
+
+                                <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-950/60 to-slate-900 border border-emerald-500/30">
+                                    <p class="text-xs text-emerald-300 font-medium flex items-center gap-2">
+                                        <i class="fa-solid fa-circle-check text-emerald-400"></i> Coaching for All Academic Levels
+                                    </p>
+                                    <p class="text-xs text-slate-400 mt-1">Primary, Secondary, University Prep & Specialized Adult Learning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER'S MESSAGE & VISION -->
+        <section id="about" class="page-section py-20 bg-slate-900 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800 relative overflow-hidden">
+                    <div class="grid lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-5 flex flex-col items-center text-center">
+                            <div class="relative">
+                                <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-cyan-500 via-emerald-500 to-amber-400 p-1.5 shadow-2xl">
+                                    <div class="w-full h-full rounded-full bg-slate-950 flex items-center justify-center overflow-hidden">
+                                        <i class="fa-solid fa-user-graduate text-7xl text-cyan-400/80"></i>
+                                    </div>
+                                </div>
+                                <span class="absolute bottom-2 right-2 bg-emerald-500 text-slate-950 font-bold text-xs px-3 py-1 rounded-full border-2 border-slate-900 shadow">
+                                    Founder
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mt-6">Student Teacher Bertin Masengesho</h3>
+                            <p class="text-cyan-400 font-medium text-sm mt-1">Founder & Lead Educator</p>
+                            <p class="text-slate-400 text-xs mt-2 max-w-xs">
+                                University of Rwanda • Faculty of Education<br/>
+                                <span class="text-slate-300">Mathematics & Physics with Education</span>
+                            </p>
+                        </div>
+
+                        <div class="lg:col-span-7 space-y-6">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800 text-cyan-400 text-xs font-semibold">
+                                <i class="fa-solid fa-quote-left"></i> Visionary Leadership
+                            </div>
+                            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
+                                Building a Hub of True Intellectual & Practical Mastery
+                            </h2>
+                            <blockquote class="text-slate-300 italic text-base sm:text-lg leading-relaxed border-l-4 border-cyan-500 pl-4 py-1">
+                                "WISD. SCIENCE ACADEMY was established in Kayonza to break traditional barriers to education. Knowledge is not merely memorized—it is understood through deep theory, tested in practical laboratories, and pondered through philosophy. Furthermore, we empower our learners with practical, entrepreneurship-ready skills such as manufacturing soaps, paints, fresh juices, and jellies. Whether you need school coaching or hands-on chemical production training, our academy is built for your success."
+                            </blockquote>
+                            
+                            <div class="grid sm:grid-cols-2 gap-4 pt-2">
+                                <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800">
+                                    <i class="fa-solid fa-microscope text-2xl text-cyan-400 mb-2"></i>
+                                    <h4 class="font-bold text-white text-sm">Modern Educational Techniques</h4>
+                                    <p class="text-slate-400 text-xs mt-1">Integrating interactive laboratory experiments with rigorous mathematical analysis.</p>
+                                </div>
+                                <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800">
+                                    <i class="fa-solid fa-vial-circle-check text-2xl text-amber-400 mb-2"></i>
+                                    <h4 class="font-bold text-white text-sm">Vocational Practical Training</h4>
+                                    <p class="text-slate-400 text-xs mt-1">Step-by-step practical formulas for soap, paint, juice, and jelly production.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRACTICAL VOCATIONAL SKILLS TRAINING PROGRAM -->
+        <section id="vocational" class="page-section py-20 bg-slate-900 border-t border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3 py-1 rounded-full bg-amber-950 text-amber-400 border border-amber-800 text-xs font-bold uppercase tracking-wider">
+                        Entrepreneurship & Practical Chemistry
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        Practical Manufacturing & Skills Training
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        We don't just teach theory—we provide hands-on training for people who want to learn how to produce market-ready consumer products!
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Soaps Card -->
+                    <div class="glass-card rounded-2xl p-6 border border-amber-500/30 hover:border-amber-400 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-pump-soap"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-amber-400 bg-amber-950 border border-amber-800 px-2.5 py-0.5 rounded-full uppercase">Practical Course</span>
+                            <h3 class="text-lg font-bold text-white mt-2 mb-2">Soap Production</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                                Learn saponification processes, formulating laundry bar soaps, liquid hand soaps, dishwashing liquids, and antiseptic soaps.
+                            </p>
+                        </div>
+                        <a href="#register" class="w-full bg-amber-500/20 hover:bg-amber-500 text-amber-300 hover:text-slate-950 font-bold py-2.5 rounded-xl text-xs text-center border border-amber-500/40 transition-all">
+                            Register for Soap Skills
+                        </a>
+                    </div>
+
+                    <!-- Paints Card -->
+                    <div class="glass-card rounded-2xl p-6 border border-cyan-500/30 hover:border-cyan-400 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-paint-roller"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-cyan-400 bg-cyan-950 border border-cyan-800 px-2.5 py-0.5 rounded-full uppercase">Practical Course</span>
+                            <h3 class="text-lg font-bold text-white mt-2 mb-2">Paint Manufacturing</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                                Master mixing pigments, binders, and solvents to formulate water-based emulsion paints, oil-based coatings, and primers.
+                            </p>
+                        </div>
+                        <a href="#register" class="w-full bg-cyan-500/20 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 font-bold py-2.5 rounded-xl text-xs text-center border border-cyan-500/40 transition-all">
+                            Register for Paint Skills
+                        </a>
+                    </div>
+
+                    <!-- Juices Card -->
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/30 hover:border-emerald-400 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-wine-glass-drop"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950 border border-emerald-800 px-2.5 py-0.5 rounded-full uppercase">Practical Course</span>
+                            <h3 class="text-lg font-bold text-white mt-2 mb-2">All Kinds of Juices</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                                Production techniques for natural fruit juices, pasteurization, healthy flavor blending, hygiene, and long-shelf-life packaging.
+                            </p>
+                        </div>
+                        <a href="#register" class="w-full bg-emerald-500/20 hover:bg-emerald-500 text-emerald-300 hover:text-slate-950 font-bold py-2.5 rounded-xl text-xs text-center border border-emerald-500/40 transition-all">
+                            Register for Juice Making
+                        </a>
+                    </div>
+
+                    <!-- Jerry / Jellies Card -->
+                    <div class="glass-card rounded-2xl p-6 border border-indigo-500/30 hover:border-indigo-400 transition-all group flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-jar"></i>
+                            </div>
+                            <span class="text-[10px] font-bold text-indigo-400 bg-indigo-950 border border-indigo-800 px-2.5 py-0.5 rounded-full uppercase">Practical Course</span>
+                            <h3 class="text-lg font-bold text-white mt-2 mb-2">Jerry & Skin Jellies</h3>
+                            <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                                Formulas for cosmetic jelly, petroleum jelly, scented body petroleum jellies, and skin protection gels for commercial sale.
+                            </p>
+                        </div>
+                        <a href="#register" class="w-full bg-indigo-500/20 hover:bg-indigo-500 text-indigo-300 hover:text-slate-950 font-bold py-2.5 rounded-xl text-xs text-center border border-indigo-500/40 transition-all">
+                            Register for Jerry Skills
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBJECTS & FOCUS AREAS -->
+        <section id="subjects" class="page-section py-20 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800 text-xs font-bold uppercase tracking-wider">
+                        Curriculum & Disciplines
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        Universal Subjects & Specialized Core Focus
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        We teach all disciplines in the world. While every subject is taught with precision, our academy places special emphasis on three core pillars of critical thought.
+                    </p>
+                </div>
+
+                <!-- Core Focus Cards (Physics, Math, Philosophy) -->
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <!-- Physics Card -->
+                    <div class="glass-card rounded-2xl p-6 border-2 border-cyan-500/40 relative hover:border-cyan-400 transition-all group">
+                        <span class="absolute top-4 right-4 bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">
+                            Core Focus #1
+                        </span>
+                        <div class="w-14 h-14 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-atom"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Physics & Lab Practice</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Unraveling the laws of the universe from quantum mechanics to astrophysics. Paired with practical experiments in our Kayonza laboratory.
+                        </p>
+                        <div class="text-xs text-cyan-400 font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Theory + Practical Experiments
+                        </div>
+                    </div>
+
+                    <!-- Mathematics Card -->
+                    <div class="glass-card rounded-2xl p-6 border-2 border-emerald-500/40 relative hover:border-emerald-400 transition-all group">
+                        <span class="absolute top-4 right-4 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">
+                            Core Focus #2
+                        </span>
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Mathematics Excellence</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Mastering pure and applied mathematics, algebra, calculus, and logical problem-solving to sharpen analytical thinking.
+                        </p>
+                        <div class="text-xs text-emerald-400 font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Advanced Problem Solving
+                        </div>
+                    </div>
+
+                    <!-- Philosophy Card -->
+                    <div class="glass-card rounded-2xl p-6 border-2 border-amber-500/40 relative hover:border-amber-400 transition-all group">
+                        <span class="absolute top-4 right-4 bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] uppercase font-bold px-2.5 py-1 rounded-full">
+                            Core Focus #3
+                        </span>
+                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Philosophy & Logic</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            Developing critical reasoning, ethics, epistemology, and the fundamental philosophical questions that elevate human intellect.
+                        </p>
+                        <div class="text-xs text-amber-400 font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Intellectual Reasoning
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Subject Grid Search -->
+                <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group text-cyan-400"></i>
+                            All Taught Disciplines
+                        </h3>
+                        <input type="text" id="subjectSearch" placeholder="Search subjects (e.g. Medicine, Chemistry)..." class="w-full md:w-72 bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                    </div>
+
+                    <div id="subjectGrid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Dynamic Subjects rendered via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRIMARY & SECONDARY COACHING SPOTLIGHT -->
+        <section id="coaching" class="page-section py-16 bg-gradient-to-r from-emerald-950 via-slate-900 to-cyan-950 border-y border-slate-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 text-center lg:text-left max-w-2xl">
+                        <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                            Personalized Tutoring & National Exams Prep
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight">
+                            Need Coaching in Primary or Secondary School Subjects?
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base">
+                            We provide tailored, step-by-step coaching to help primary and secondary students excel in school assessments and national examinations.
+                        </p>
+                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start text-xs text-slate-300 font-medium">
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-check-circle text-emerald-400"></i> Primary Foundation</span>
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-check-circle text-emerald-400"></i> O-Level & A-Level Prep</span>
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-check-circle text-emerald-400"></i> Direct One-on-One Assistance</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <a href="tel:0727650086" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-4 rounded-xl text-center transition-all shadow-lg flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-phone text-lg"></i>
+                            <div>
+                                <div class="text-xs uppercase font-semibold text-slate-900">Call Academy Directly</div>
+                                <div class="text-lg">0727650086</div>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/250727650086?text=Hello%20WISD%20Science%20Academy,%20I%20need%20coaching%20for%20a%20student." target="_blank" class="bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 font-bold px-6 py-4 rounded-xl text-center transition-all flex items-center justify-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl text-emerald-400"></i>
+                            <div class="text-left">
+                                <div class="text-xs text-slate-400 uppercase font-semibold">Chat on WhatsApp</div>
+                                <div class="text-sm font-bold text-white">+250 727 650 086</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIGITAL LIBRARY & BOOK REQUEST HUB -->
+        <section id="library" class="page-section py-16 bg-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800 text-xs font-bold uppercase tracking-wider">
+                        Document & Book Vault
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        Digital Library & Resource Request
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Browse this public catalog free of charge. Downloads cost 100 RWF per item. The entries below are catalog records; ask the administrator whether a reading copy or download is available. Payment goes to 0727650086 (MASENGESHO Bertin) and is confirmed manually.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-8">
+                    <!-- Library Catalog Preview (8 Cols) -->
+                    <div class="lg:col-span-8 space-y-6">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <div class="relative flex-grow">
+                                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-500"></i>
+                                <input type="text" id="librarySearch" placeholder="Search book title, author, or discipline..." class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                            </div>
+                            <select id="libraryFilter" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-cyan-400">
+                                <option value="All">All Categories</option>
+                                <option value="Physics & Math">Physics & Math</option>
+                                <option value="Philosophy">Philosophy</option>
+                                <option value="Medicine & Bio">Medicine & Biology</option>
+                                <option value="Primary & Secondary">Primary & Secondary</option>
+                            </select>
+                        </div>
+
+                        <!-- Book Grid -->
+                        <div id="bookGrid" class="grid sm:grid-cols-2 gap-4">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Book Request Form (4 Cols) -->
+                    <div class="lg:col-span-4">
+                        <div class="glass-card rounded-2xl p-6 border border-slate-800 sticky top-28">
+                            <h3 class="text-lg font-bold text-white mb-1 flex items-center gap-2">
+                                <i class="fa-solid fa-hand-holding-hand text-cyan-400"></i> Request Any Book
+                            </h3>
+                            <p class="text-xs text-slate-400 mb-4">
+                                Cannot find the exact textbook or paper? Submit a request and our academy team will source it for you.
+                            </p>
+
+                            <form id="bookRequestForm" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Your Full Name</label>
+                                    <input type="text" id="reqName" required placeholder="e.g. Jean Paul" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Phone Number</label>
+                                    <input type="tel" id="reqPhone" required placeholder="e.g. 078XXXXXXX" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Book Title / Topic</label>
+                                    <input type="text" id="reqTitle" required placeholder="e.g. University Physics with Modern Physics" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Additional Notes</label>
+                                    <textarea id="reqNotes" rows="2" placeholder="Primary level textbook, specific author..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-cyan-400"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-slate-950 font-bold py-2.5 rounded-lg text-sm transition-all shadow-md">
+                                    Submit Book Request
+                                </button>
+                            </form>
+                            <div id="reqSuccessMsg" class="hidden mt-3 p-3 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs text-center">
+                                <i class="fa-solid fa-circle-info mr-1"></i> WhatsApp should open with your request. Review it and press Send to submit.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDENT LOUNGE & ENTERTAINMENT / MIND RELAXATION -->
+        <section id="relaxation" class="page-section py-16 bg-slate-100 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="px-3 py-1 rounded-full bg-amber-950 text-amber-400 border border-amber-800 text-xs font-bold uppercase tracking-wider">
+                        Mind Relaxation & Science Fun
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                        Student Lounge & Brain Refreshment
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        "We also talk about entertainment that helps us relax." Take a break, challenge your mind with science trivia, generate philosophical quotes, or listen to relaxing study audio synthesized right in your browser.
+                    </p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Audio Relaxation Widget -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-amber-400 uppercase tracking-wider"><i class="fa-solid fa-headphones mr-1"></i> Focus Sound Generator</span>
+                                <span id="audioStatus" class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded">Stopped</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Ambient Focus Audio</h3>
+                            <p class="text-xs text-slate-400 mb-6">Synthesized calm sound waves designed for physics problem-solving and calm studying.</p>
+                            
+                            <div class="flex items-center justify-center gap-4 py-6 bg-slate-950 rounded-xl border border-slate-800">
+                                <button id="playAudioBtn" class="w-14 h-14 rounded-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold flex items-center justify-center text-xl transition-all shadow-lg hover:scale-105">
+                                    <i class="fa-solid fa-play" id="playIcon"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-slate-500 text-center mt-4">Synthesized ambient white-noise tone (Web Audio API)</p>
+                    </div>
+
+                    <!-- Philosophical Quote Generator -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider"><i class="fa-solid fa-quote-left mr-1"></i> Daily Philosophy</span>
+                                <button id="nextQuoteBtn" class="text-xs text-cyan-400 hover:underline"><i class="fa-solid fa-rotate mr-1"></i> Next Quote</button>
+                            </div>
+                            <blockquote id="quoteText" class="text-slate-200 italic text-sm sm:text-base leading-relaxed min-h-[100px] flex items-center">
+                                "The important thing is not to stop questioning. Curiosity has its own reason for existing."
+                            </blockquote>
+                            <p id="quoteAuthor" class="text-xs font-bold text-cyan-400 mt-2 text-right">— Albert Einstein</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 text-[11px] text-slate-500 text-center">
+                            Wisdom to inspire critical thinking during study breaks.
+                        </div>
+                    </div>
+
+                    <!-- Interactive Science Trivia -->
+                    <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider"><i class="fa-solid fa-gamepad mr-1"></i> Science Challenge</span>
+                                <span id="quizScore" class="text-xs bg-emerald-950 text-emerald-300 px-2.5 py-1 rounded-full font-bold">Score: 0</span>
+                            </div>
+                            <div id="quizContainer">
+                                <p id="quizQuestion" class="text-sm font-semibold text-white mb-4">What particle in an atom carries a negative electrical charge?</p>
+                                <div id="quizOptions" class="space-y-2">
+                                    <!-- Options injected via JS -->
+                                </div>
+                            </div>
+                        </div>
+                        <div id="quizFeedback" class="mt-4 text-xs font-semibold text-center min-h-[20px]"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MEMBER DISCUSSION SPACE -->
+        <section id="community" class="page-section py-16 bg-slate-100 border-t border-slate-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">Wisdom Science Academy members</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-2">Ideas & Discussion</h2>
+                    <p class="text-sm text-slate-400 mt-2">This is the member discussion panel. Approved members can post ideas, read replies, and discuss learning.</p>
+                </div>
+                <form id="discussionForm" class="hidden glass-card rounded-2xl p-5 space-y-3">
+                    <div class="grid sm:grid-cols-2 gap-3"><input id="discussionTopic" required maxlength="120" placeholder="Discussion title" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm"></div>
+                    <textarea id="discussionBody" required maxlength="2000" rows="3" placeholder="Share an idea or ask a question..." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm"></textarea>
+                    <button class="bg-cyan-500 text-slate-950 font-bold px-5 py-2 rounded-lg text-sm">Post idea</button>
+                    <p id="discussionNotice" class="text-xs text-amber-300"></p>
+                </form>
+                <div id="discussionPosts" class="grid sm:grid-cols-2 gap-3 mt-5"></div>
+                <p class="text-xs text-slate-500 mt-5 text-center">Discussions are shared with approved Wisdom Science Academy members.</p>
+            </div>
+        </section>
+
+        <!-- ONLINE STUDENT REGISTRATION SYSTEM -->
+        <section id="register" class="page-section py-16 bg-slate-100 border-t border-slate-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative">
+                    <div class="text-center max-w-2xl mx-auto mb-10 space-y-2">
+                            <span class="px-3 py-1 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800 text-xs font-bold uppercase tracking-wider">
+                            Registration Portal
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-white">
+                            Choose how to join
+                        </h2>
+                        <p class="text-slate-400 text-sm">
+                            Reading the library is free. Membership and student enrollment each require an initial 100 RWF payment to 0727650086, registered to MASENGESHO Bertin. Pay first, then submit your request and send payment confirmation to the administrator.
+                        </p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-10">
+                        <form id="memberForm" class="rounded-2xl bg-slate-950 border border-cyan-500/30 p-6 space-y-4">
+                            <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-people-group text-cyan-400 mr-2"></i>Academy membership</h3>
+                            <p class="text-sm text-slate-400">For people who want to join the community and participate in discussions. Pay the initial <strong class="text-white">100 RWF</strong> first, then submit your request with payment confirmation.</p>
+                            <input id="memberName" required placeholder="Full name" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                            <input id="memberPhone" required type="tel" placeholder="Phone number" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                            <input id="memberPassword" required type="password" minlength="12" autocomplete="new-password" placeholder="Create your password (12+ characters)" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                            <input id="memberPasswordConfirm" required type="password" minlength="12" autocomplete="new-password" placeholder="Confirm your password" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                            <input id="memberTransaction" required placeholder="Mobile money transaction reference" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                            <button class="w-full bg-cyan-500 text-slate-950 font-bold py-3 rounded-lg">Request membership</button>
+                            <p id="memberStatus" class="hidden text-xs text-emerald-300">Request prepared. Contact the administrator to confirm payment and membership.</p>
+                        </form>
+                        <div class="rounded-2xl bg-slate-950 border border-emerald-500/30 p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-white"><i class="fa-solid fa-mobile-screen-button text-emerald-400 mr-2"></i>Payment instructions</h3>
+                            <p class="text-sm text-slate-300">Pay the initial <strong>100 RWF</strong> before submitting a membership or student enrollment request to <strong>0727650086</strong>, registered under <strong>MASENGESHO Bertin</strong>.</p>
+                            <p class="text-xs text-slate-400">Keep your transaction confirmation and share it with the academy administrator. This website cannot verify mobile payments automatically.</p>
+                            <a href="tel:0727650086" class="inline-flex bg-emerald-500 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm">Call the administrator</a>
+                        </div>
+                    </div>
+
+                    <form id="registrationForm" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Full Name *</label>
+                                <input type="text" id="regFullName" required placeholder="e.g. Keza Alice" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Phone Number *</label>
+                                <input type="tel" id="regPhone" required placeholder="e.g. 078XXXXXXX" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div><label class="block text-xs font-semibold text-slate-300 mb-2">Create your password (12+ characters) *</label><input id="regPassword" type="password" required minlength="12" autocomplete="new-password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200"></div>
+                            <div><label class="block text-xs font-semibold text-slate-300 mb-2">Confirm password *</label><input id="regPasswordConfirm" type="password" required minlength="12" autocomplete="new-password" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200"></div>
+                            <div><label class="block text-xs font-semibold text-slate-300 mb-2">100 RWF payment transaction reference *</label><input id="regTransaction" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200" placeholder="Pay first, then enter transaction ID"></div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Email Address (Optional)</label>
+                                <input type="email" id="regEmail" placeholder="e.g. student@gmail.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Primary Program / Field of Interest *</label>
+                                <select id="regSubject" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <optgroup label="Special Core Focus">
+                                        <option value="Physics (Special Focus)">Physics (Special Focus)</option>
+                                        <option value="Mathematics (Special Focus)">Mathematics (Special Focus)</option>
+                                        <option value="Philosophy (Special Focus)">Philosophy (Special Focus)</option>
+                                    </optgroup>
+                                    <optgroup label="Practical Vocational Manufacturing Training">
+                                        <option value="Practical Training: Soap Production">Practical Training: Soap Production (Bar/Liquid)</option>
+                                        <option value="Practical Training: Paint Manufacturing">Practical Training: Paint Manufacturing (Emulsion/Oil)</option>
+                                        <option value="Practical Training: Juice Production">Practical Training: All Kinds of Juices Making</option>
+                                        <option value="Practical Training: Jerry & Skin Jellies">Practical Training: Jerry & Petroleum Skin Jellies</option>
+                                    </optgroup>
+                                    <optgroup label="Academic Coaching & Other Subjects">
+                                        <option value="Primary & Secondary All Subjects Coaching">Primary & Secondary All Subjects Coaching</option>
+                                        <option value="Medical Sciences & Biology">Medical Sciences & Biology</option>
+                                        <option value="Engineering Fields">Engineering Disciplines</option>
+                                        <option value="Chemistry & Physical Sciences">Chemistry & Physical Sciences</option>
+                                        <option value="Humanities (History/Geography/Theology)">Humanities & Social Sciences</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Academic level *</label>
+                                <select id="regLevel" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400"><option>Primary</option><option>Secondary</option><option>University</option><option>Adult learner</option></select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 mb-2">Mode of Learning *</label>
+                                <select id="regMode" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400">
+                                    <option value="On-site in Kayonza">On-site in Kayonza</option>
+                                    <option value="Online Coaching & Guidance">Online Coaching & Distance Guidance</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-2">Specific Goals or Needs</label>
+                            <textarea id="regGoals" rows="3" placeholder="Tell us if you need help in specific national exams, laboratory practicals, or book recommendations..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-400"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 via-emerald-500 to-amber-400 hover:from-cyan-400 hover:to-amber-300 text-slate-950 font-extrabold py-4 rounded-xl text-base transition-all shadow-xl hover:scale-[1.01]">
+                            Submit Student Enrollment Request
+                        </button>
+                    </form>
+
+                    <!-- Receipt Modal / Card (Hidden by default) -->
+                    <div id="receiptCard" class="hidden mt-8 p-6 sm:p-8 rounded-2xl bg-slate-950 border-2 border-emerald-500 text-slate-100">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                            <div>
+                            <span class="bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Request summary — not yet submitted</span>
+                                <h3 class="text-xl font-extrabold text-white mt-1">WISD. SCIENCE ACADEMY</h3>
+                                <p class="text-xs text-slate-400">Kayonza, Rwanda • Contact: 0727650086</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-slate-400">Receipt ID</p>
+                                <p id="recId" class="text-sm font-mono font-bold text-cyan-400">#WISD-0000</p>
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4 text-xs mb-6">
+                            <div><span class="text-slate-500">Applicant:</span> <strong id="recName" class="text-slate-200"></strong></div>
+                            <div><span class="text-slate-500">Phone Number:</span> <strong id="recPhone" class="text-slate-200"></strong></div>
+                            <div><span class="text-slate-500">Academic Level:</span> <strong id="recLevel" class="text-slate-200"></strong></div>
+                            <div><span class="text-slate-500">Focus Subject:</span> <strong id="recSubject" class="text-slate-200"></strong></div>
+                            <div><span class="text-slate-500">Learning Mode:</span> <strong id="recMode" class="text-slate-200"></strong></div>
+                            <div><span class="text-slate-500">Founder:</span> <strong class="text-slate-200">Bertin Masengesho</strong></div>
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300 mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-circle-info text-cyan-400 text-lg"></i>
+                            <span>Your 100 RWF payment reference is awaiting manual verification. After approval, the administrator can coordinate your schedule.</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="window.print()" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-lg text-xs flex items-center gap-2">
+                                <i class="fa-solid fa-print"></i> Print Request Summary
+                            </button>
+                            <button id="resetRegBtn" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-lg text-xs">
+                                Register Another Student
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="setPasswordPage" class="page-section hidden py-16 bg-slate-100">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-7">
+                    <span class="text-xs font-bold uppercase tracking-wider text-cyan-700">Private account setup</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900 mt-2">Choose your password</h2>
+                    <p class="text-sm text-slate-600 mt-2">Enter your phone number and the one-time setup code given to you by WISD, then choose a password only you know.</p>
+                    <form id="setPasswordForm" class="space-y-4 mt-6">
+                        <label class="block text-sm font-semibold text-slate-700">Your phone number<input id="setupPhone" type="tel" required autocomplete="tel" placeholder="e.g. 078 123 4567" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-3 text-sm"></label>
+                        <label class="block text-sm font-semibold text-slate-700">One-time setup code<input id="setupCode" required autocomplete="one-time-code" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-3 text-sm"></label>
+                        <label class="block text-sm font-semibold text-slate-700">Your new password (12+ characters)<input id="setupNewPassword" type="password" required minlength="12" autocomplete="new-password" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-3 text-sm"></label>
+                        <label class="block text-sm font-semibold text-slate-700">Confirm your new password<input id="setupConfirmPassword" type="password" required minlength="12" autocomplete="new-password" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-3 text-sm"></label>
+                        <button class="w-full bg-cyan-700 hover:bg-cyan-800 text-white font-bold px-5 py-3 rounded-lg">Set my password</button>
+                        <p id="setupPasswordStatus" role="status" aria-live="polite" class="text-sm"></p>
+                        <a id="setupSignInLink" href="/community" class="hidden text-sm font-bold text-cyan-800 underline">Go to member sign in</a>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="adminPanel" class="page-section hidden py-12 bg-slate-100 border-t border-slate-200">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-extrabold text-white">Administrator control panel</h2>
+                <p class="text-sm text-slate-400 mt-2">Payment references must be checked against mobile money records before approval.</p>
+                <nav class="flex flex-wrap gap-2 mt-6 p-2 bg-white rounded-xl border border-slate-200">
+                    <a href="#adminDiscussion" class="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold">Discussion inbox</a>
+                    <a href="#adminApplications" class="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold">Applications</a>
+                    <a href="#adminPayments" class="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold">Payment review</a>
+                    <a href="#adminBooks" class="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold">Library resources</a>
+                    <a href="#adminAddUserForm" class="px-3 py-2 rounded-lg bg-slate-100 text-slate-700 text-sm font-semibold">Add a person</a>
+                </nav>
+                <h3 class="text-xl font-bold text-slate-900 mt-7">Member discussion inbox</h3>
+                <p class="text-sm text-slate-600 mt-1">Reply to members here. Replies appear on the Community page under “Wisdom Science Academy.”</p>
+                <div id="adminDiscussion" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+                <h3 class="text-xl font-bold text-slate-900 mt-7">Membership and enrollment requests</h3>
+                <div id="adminApplications" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+                <h3 class="text-xl font-bold text-slate-900 mt-7">Payment references</h3>
+                <div id="adminPayments" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+                <h3 class="text-xl font-bold text-slate-900 mt-7">Published library resources</h3>
+                <div id="adminBooks" class="grid md:grid-cols-2 gap-4 mt-4"></div>
+                <div class="glass-card rounded-2xl p-6 mt-8">
+                    <h3 class="text-xl font-bold text-slate-900">Add a member or student account</h3>
+                    <p class="text-sm text-slate-600 mt-1">Use this after checking the person’s 100 RWF payment. The system will create a one-time setup code for the person to choose their own password.</p>
+                    <form id="adminAddUserForm" class="grid sm:grid-cols-2 gap-4 mt-5">
+                        <label class="text-xs font-semibold text-slate-600">Account type<select id="newUserKind" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"><option value="member">Academy member</option><option value="student">Student</option></select></label>
+                        <label class="text-xs font-semibold text-slate-600">Full name<input id="newUserName" required class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                        <label class="text-xs font-semibold text-slate-600">Their phone number<input id="newUserPhone" type="tel" required placeholder="e.g. 078 123 4567" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                        <label class="text-xs font-semibold text-slate-600">Verified transaction reference<input id="newUserTransaction" required class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                        <label class="text-xs font-semibold text-slate-600">Program (students)<input id="newUserProgram" class="block w-full mt-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></label>
+                        <label class="sm:col-span-2 flex gap-2 items-start text-sm text-slate-700"><input id="newUserPaymentVerified" type="checkbox" required class="mt-1"><span>I checked the mobile money record and verified the 100 RWF payment to 0727650086, MASENGESHO Bertin.</span></label>
+                        <button class="sm:col-span-2 justify-self-start bg-cyan-700 hover:bg-cyan-800 text-white font-bold px-5 py-3 rounded-lg">Create approved account</button>
+                        <p id="adminAddUserStatus" role="status" class="sm:col-span-2 text-sm"></p>
+                    </form>
+                    <div id="setupCodeResult" class="hidden mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                        <p class="text-sm font-semibold text-emerald-900">Give this one-time setup code to the person privately. It expires in 30 days and can only be used once.</p>
+                        <div class="flex flex-col sm:flex-row gap-2 mt-3"><input id="createdSetupCode" readonly class="flex-1 bg-white border border-emerald-300 rounded-lg px-3 py-2 font-mono text-sm"><button id="copySetupCode" type="button" class="bg-emerald-700 text-white rounded-lg px-4 py-2 text-sm font-bold">Copy code</button></div>
+                        <a href="/set-password" class="inline-block text-sm text-cyan-800 underline mt-3">Password setup page</a>
+                    </div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 mt-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-4">Add a library resource</h3>
+                    <form id="uploadBookForm" class="grid sm:grid-cols-2 gap-4">
+                        <input id="bookTitle" required placeholder="Resource title" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                        <input id="bookAuthor" placeholder="Author" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                        <input id="bookCategory" placeholder="Category" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+                        <input id="bookFile" type="file" required accept=".pdf,.txt,application/pdf,text/plain" class="text-sm text-slate-300">
+                        <textarea id="bookDescription" rows="2" placeholder="Short description" class="sm:col-span-2 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm"></textarea>
+                        <button class="bg-cyan-500 text-slate-950 font-bold px-5 py-3 rounded-lg">Publish free reading copy</button>
+                        <p id="uploadStatus" class="text-xs text-slate-300"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 font-bold text-white text-base">
+                        <i class="fa-solid fa-atom text-cyan-400"></i> WISD. SCIENCE ACADEMY
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        A center for sharpening human intelligence across all worldwide fields of knowledge. Focused on Physics, Mathematics, Philosophy, and personalized student coaching.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/programs" class="hover:text-cyan-700">Programs & Training</a></li>
+                        <li><a href="/library" class="hover:text-cyan-700">Digital Library</a></li>
+                        <li><a href="/community" class="hover:text-cyan-700">Member Community</a></li>
+                        <li><a href="/register" class="hover:text-cyan-700">Membership & Enrollment</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">Location & Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber-400"></i> Kayonza, Eastern Province, Rwanda</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-emerald-400"></i> Phone: 0727650086 / +250 727 650 086</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-user-graduate text-cyan-400"></i> Founder: Bertin Masengesho</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-university text-slate-400"></i> Univ. of Rwanda Faculty of Education</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">Helpline & Direct Call</h4>
+                    <p class="text-slate-400 mb-3">Have questions or want coaching right away?</p>
+                    <a href="tel:0727650086" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold px-4 py-2.5 rounded-xl text-sm transition-all shadow-md">
+                        <i class="fa-solid fa-phone"></i> Call 0727650086
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500">
+                <p>&copy; WISD. SCIENCE ACADEMY — Kayonza. All rights reserved.</p>
+                <p class="flex items-center gap-1">
+                    <span>Nurturing Intelligence through Science & Philosophy</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA OBJECTS ---
+        const subjectsData = [
+            { name: "Physics", icon: "fa-atom", tag: "Special Focus", desc: "Classical Mechanics, Electromagnetism, Quantum Theory, and Lab Experiments." },
+            { name: "Mathematics", icon: "fa-calculator", tag: "Special Focus", desc: "Algebra, Calculus, Geometry, Differential Equations, and Logic." },
+            { name: "Philosophy", icon: "fa-brain", tag: "Special Focus", desc: "Epistemology, Formal Logic, Ethics, Metaphysics, and Rationality." },
+            { name: "Soap Manufacturing", icon: "fa-pump-soap", tag: "Practical Skills", desc: "Hands-on training for making laundry bars, liquid soaps, and antiseptics." },
+            { name: "Paint Production", icon: "fa-paint-roller", tag: "Practical Skills", desc: "Chemical formulations for emulsion water paints, primers, and gloss paints." },
+            { name: "Juice Making", icon: "fa-wine-glass-drop", tag: "Practical Skills", desc: "Producing natural fresh juices, pasteurization, and packaging." },
+            { name: "Jerry & Jellies Making", icon: "fa-jar", tag: "Practical Skills", desc: "Formulating cosmetic petroleum jelly and skin care jellies." },
+            { name: "Chemistry", icon: "fa-flask", tag: "Laboratory", desc: "Organic, Inorganic, Physical Chemistry, and Practical Lab Syntheses." },
+            { name: "Biology", icon: "fa-dna", tag: "Life Sciences", desc: "Cellular Biology, Genetics, Human Physiology, and Ecology." },
+            { name: "Medical Sciences", icon: "fa-stethoscope", tag: "Health", desc: "Human Anatomy, General Pathology, Pharmacology, and Medical Foundations." },
+            { name: "Engineering Fields", icon: "fa-gear", tag: "Applied Science", desc: "Civil, Mechanical, Electrical, Computer, and Structural Engineering." },
+            { name: "Geography", icon: "fa-earth-africa", tag: "Earth Science", desc: "Physical Geography, Climatology, GIS, and Human Demographics." },
+            { name: "Psychology", icon: "fa-head-side-virus", tag: "Behavioral", desc: "Cognitive Psychology, Development, Learning Theories, and Mind Dynamics." },
+            { name: "History", icon: "fa-landmark", tag: "Humanities", desc: "Global Civilizations, Rwandan History, African Heritage, and Modern Eras." },
+            { name: "Theology", icon: "fa-book-bible", tag: "Humanities", desc: "Comparative Religion, Systematic Theology, and Historical Manuscripts." },
+            { name: "Primary School Subjects", icon: "fa-child-reaching", tag: "Coaching", desc: "Complete syllabus prep in Mathematics, Science, Social Studies & Languages." },
+            { name: "Secondary School Coaching", icon: "fa-graduation-cap", tag: "Coaching", desc: "O-Level & A-Level focused exam preparation and laboratory coaching." }
+        ];
+
+        let libraryBooks = [];
+
+        const quotes = [
+            { text: "The important thing is not to stop questioning. Curiosity has its own reason for existing.", author: "Albert Einstein" },
+            { text: "Philosophy is written in that great book which ever lies before our eyes—I mean the universe.", author: "Galileo Galilei" },
+            { text: "Mathematics is the language with which God has written the universe.", author: "Galileo Galilei" },
+            { text: "An unexamined life is not worth living.", author: "Socrates" },
+            { text: "Science is a way of thinking much more than it is a body of knowledge.", author: "Carl Sagan" }
+        ];
+
+        const quizQuestions = [
+            {
+                q: "What particle in an atom carries a negative electrical charge?",
+                options: ["Proton", "Neutron", "Electron", "Photon"],
+                answer: 2
+            },
+            {
+                q: "Which science subject focuses on the study of matter, motion, and energy?",
+                options: ["Biology", "Physics", "Geography", "Theology"],
+                answer: 1
+            },
+            {
+                q: "Where is WISD. SCIENCE ACADEMY located?",
+                options: ["Kigali", "Kayonza", "Musanze", "Huye"],
+                answer: 1
+            },
+            {
+                q: "Who is the founder of WISD. SCIENCE ACADEMY?",
+                options: ["Student Teacher Bertin Masengesho", "Albert Einstein", "Isaac Newton", "Marie Curie"],
+                answer: 0
+            }
+        ];
+
+        // --- DOM RENDER FUNCTIONS ---
+        
+        // 1. Render Subjects Grid
+        function renderSubjects(filter = '') {
+            const subjectGrid = document.getElementById('subjectGrid');
+            subjectGrid.innerHTML = '';
+
+            const filtered = subjectsData.filter(s => 
+                s.name.toLowerCase().includes(filter.toLowerCase()) || 
+                s.desc.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            if (filtered.length === 0) {
+                subjectGrid.innerHTML = `<p class="col-span-full text-slate-500 text-xs text-center py-4">No subjects found matching "${filter}"</p>`;
+                return;
+            }
+
+            filtered.forEach(sub => {
+                const isSpecial = sub.tag === "Special Focus";
+                const card = document.createElement('div');
+                card.className = `p-4 rounded-xl bg-slate-950 border ${isSpecial ? 'border-cyan-500/50 bg-cyan-950/10' : 'border-slate-800'} hover:border-slate-700 transition-all flex flex-col justify-between`;
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <i class="fa-solid ${sub.icon} ${isSpecial ? 'text-cyan-400' : 'text-slate-400'} text-lg"></i>
+                            <span class="text-[10px] ${isSpecial ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'} px-2 py-0.5 rounded font-semibold">${sub.tag}</span>
+                        </div>
+                        <h4 class="font-bold text-white text-sm mb-1">${sub.name}</h4>
+                        <p class="text-xs text-slate-400 leading-normal">${sub.desc}</p>
+                    </div>
+                `;
+                subjectGrid.appendChild(card);
+            });
+        }
+
+        // 2. Render Library Books
+        function renderLibrary() {
+            const searchVal = document.getElementById('librarySearch').value.toLowerCase();
+            const filterVal = document.getElementById('libraryFilter').value;
+            const bookGrid = document.getElementById('bookGrid');
+            bookGrid.innerHTML = '';
+
+            const filtered = libraryBooks.filter(book => {
+                const matchesSearch = book.title.toLowerCase().includes(searchVal) || (book.author || '').toLowerCase().includes(searchVal) || (book.category || '').toLowerCase().includes(searchVal);
+                const matchesCategory = filterVal === 'All' || book.category === filterVal;
+                return matchesSearch && matchesCategory;
+            });
+
+            if (filtered.length === 0) {
+                bookGrid.innerHTML = `<p class="col-span-full text-slate-500 text-xs text-center py-6">No matching books found. Use the Request Form to order!</p>`;
+                return;
+            }
+
+            filtered.forEach(book => {
+                const card = document.createElement('div');
+                card.className = "p-4 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-500/40 transition-all flex flex-col justify-between space-y-3";
+                card.innerHTML = `
+                    <div>
+                        <h4 class="font-bold text-slate-100 text-sm">${escapeHtml(book.title)}</h4>
+                        <p class="text-xs text-slate-400 mt-1">${escapeHtml(book.category || 'General')}${book.author ? ` · ${escapeHtml(book.author)}` : ''}</p>
+                        <p class="text-xs text-slate-500 mt-2">${escapeHtml(book.description || '')}</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2"><button type="button" data-book="${book.id}" class="book-read bg-slate-900 hover:bg-slate-800 text-cyan-300 text-xs font-semibold py-2 rounded-lg border border-slate-800">Read free</button><button type="button" data-book="${book.id}" class="book-download bg-slate-900 hover:bg-slate-800 text-amber-300 text-xs font-semibold py-2 rounded-lg border border-slate-800">Download · 100 RWF</button></div>
+                `;
+                bookGrid.appendChild(card);
+            });
+            bookGrid.querySelectorAll('.book-read').forEach(button => button.addEventListener('click', async () => {
+                const reader = window.open('', '_blank');
+                const response = await fetch(`/api/books/${button.dataset.book}/read`);
+                if (!response.ok) { reader?.close(); return alert('Could not open this resource.'); }
+                if (response.headers.get('content-type').includes('application/pdf')) { if(reader) reader.location=`/api/books/${button.dataset.book}/read`; else alert('Allow popups to open the PDF.'); return; }
+                const data = await response.json();
+                if (reader) { reader.document.title = data.title; reader.document.body.innerHTML = `<pre style="white-space:pre-wrap;font:16px/1.6 sans-serif;max-width:800px;margin:40px auto;padding:0 20px"></pre>`; reader.document.querySelector('pre').textContent = data.text; }
+                else alert(data.text.slice(0,5000));
+            }));
+            bookGrid.querySelectorAll('.book-download').forEach(button => button.addEventListener('click', async () => {
+                let response = await fetch(`/api/books/${button.dataset.book}/access`);
+                let error = await response.json();
+                if (response.status === 401) return alert('Sign in before requesting a download.');
+                if (!response.ok) return alert(error.error || 'Download unavailable.');
+                if (error.entitled) return window.location.assign(`/api/books/${button.dataset.book}/download`);
+                const transactionRef = prompt('Pay 100 RWF to 0727650086 (MASENGESHO Bertin), then enter your transaction reference for administrator review:');
+                if (!transactionRef) return;
+                response = await fetch('/api/payment', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({kind:'download',bookId:Number(button.dataset.book),transactionRef}) });
+                error = await response.json();
+                alert(response.ok ? error.message : (error.error || 'Could not submit payment reference.'));
+            }));
+        }
+
+        // 3. Dynamic Quote Generator
+        let currentQuoteIndex = 0;
+        function showQuote(index) {
+            const q = quotes[index];
+            document.getElementById('quoteText').innerText = `"${q.text}"`;
+            document.getElementById('quoteAuthor').innerText = `— ${q.author}`;
+        }
+
+        // 4. Interactive Science Trivia
+        let currentQuizIdx = 0;
+        let score = 0;
+        function renderQuiz() {
+            const qData = quizQuestions[currentQuizIdx];
+            document.getElementById('quizQuestion').innerText = qData.q;
+            const optionsContainer = document.getElementById('quizOptions');
+            optionsContainer.innerHTML = '';
+            document.getElementById('quizFeedback').innerText = '';
+
+            qData.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left bg-slate-950 hover:bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-200 transition-all";
+                btn.innerText = `${String.fromCharCode(65 + idx)}. ${opt}`;
+                btn.onclick = () => checkAnswer(idx);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIdx) {
+            const qData = quizQuestions[currentQuizIdx];
+            const feedback = document.getElementById('quizFeedback');
+            if (selectedIdx === qData.answer) {
+                score++;
+                feedback.className = "mt-4 text-xs font-semibold text-center text-emerald-400";
+                feedback.innerText = "Correct answer! Well done.";
+            } else {
+                feedback.className = "mt-4 text-xs font-semibold text-center text-rose-400";
+                feedback.innerText = `Incorrect. Correct answer was: ${qData.options[qData.answer]}`;
+            }
+            document.getElementById('quizScore').innerText = `Score: ${score}`;
+
+            setTimeout(() => {
+                currentQuizIdx = (currentQuizIdx + 1) % quizQuestions.length;
+                renderQuiz();
+            }, 2000);
+        }
+
+        // 5. Audio Synthesizer (Web Audio API Focus Tone)
+        let audioCtx = null;
+        let oscillator = null;
+        let isPlayingAudio = false;
+
+        function toggleFocusAudio() {
+            const btn = document.getElementById('playAudioBtn');
+            const icon = document.getElementById('playIcon');
+            const status = document.getElementById('audioStatus');
+
+            if (!isPlayingAudio) {
+                try {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    oscillator = audioCtx.createOscillator();
+                    const gainNode = audioCtx.createGain();
+
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(216, audioCtx.currentTime); // Calming binaural harmonic frequency
+                    gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+
+                    oscillator.start();
+                    isPlayingAudio = true;
+                    icon.className = "fa-solid fa-pause";
+                    status.innerText = "Playing Calm Focus Sound";
+                    status.className = "text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded";
+                } catch(e) {
+                    console.error(e);
+                }
+            } else {
+                if (oscillator) oscillator.stop();
+                isPlayingAudio = false;
+                icon.className = "fa-solid fa-play";
+                status.innerText = "Stopped";
+                status.className = "text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded";
+            }
+        }
+
+        // --- EVENT LISTENERS & INITIALIZATION ---
+        function contactAdministrator(message) {
+            const url = `https://wa.me/250727650086?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+        }
+
+        const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+        let currentPage = 'home';
+        async function api(path, options = {}) {
+            const response = await fetch(path, { credentials: 'same-origin', ...options });
+            const type = response.headers.get('content-type') || '';
+            const data = type.includes('application/json') ? await response.json() : null;
+            if (!response.ok) throw new Error(data?.error || 'Request failed.');
+            return data;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const pageRoutes = {
+                '/': {key:'home', ids:['homeHero','about'], title:'Welcome to Wisdom Science Academy', description:'Science, practical training, coaching, and a welcoming place to learn.', eyebrow:'Kayonza · Rwanda'},
+                '/programs': {key:'programs', ids:['vocational','subjects','coaching'], title:'Programs & Training', description:'Explore academic subjects, practical skills, and coaching programs.', eyebrow:'Learn and build skills'},
+                '/library': {key:'library', ids:['library'], title:'Digital Library', description:'Browse and read available resources free. Downloads cost 100 RWF after payment.', eyebrow:'Open reading · Paid downloads'},
+                '/community': {key:'community', ids:['account','relaxation','community'], title:'Member Community', description:'Sign in to join member discussions, and enjoy learning activities.', eyebrow:'Ideas · Learning · Discussion'},
+                '/register': {key:'register', ids:['register'], title:'Membership & Student Enrollment', description:'Choose membership or student enrollment and follow the payment instructions.', eyebrow:'Join Wisdom Science Academy'},
+                '/set-password': {key:'setup', ids:['setPasswordPage'], title:'Set Your WISD Password', description:'Choose a private password for your new account.', eyebrow:'Secure account setup'},
+                '/admin': {key:'admin', ids:['account','adminPanel'], title:'Administrator Workspace', description:'Sign in to review applications and payment references, and manage library resources.', eyebrow:'Restricted access · MASENGESHO Bertin'}
+            };
+            const route = pageRoutes[location.pathname] || pageRoutes['/'];
+            currentPage = route.key;
+            document.title = `${route.title} | WISD. SCIENCE ACADEMY`;
+            document.getElementById('loginHeading').textContent = currentPage === 'admin' ? 'Administrator sign in' : 'Member & student sign in';
+            document.getElementById('loginDescription').textContent = currentPage === 'admin' ? 'The administrator signs in with academy phone number 0727650086 and the administrator password.' : 'Sign in with your own registered phone number. Approved members can join discussions, and students can view their account status.';
+            document.getElementById('loginPhoneLabel').firstChild.textContent = currentPage === 'admin' ? 'Administrator phone number' : 'Your phone number';
+            document.getElementById('loginPhone').placeholder = currentPage === 'admin' ? '0727650086' : 'Your registered phone number';
+            document.querySelectorAll('.page-section').forEach(section => section.classList.add('hidden'));
+            route.ids.forEach(id => { if(id !== 'adminPanel') document.getElementById(id)?.classList.remove('hidden'); });
+            const banner=document.getElementById('pageBanner');
+            if(currentPage!=='home') { banner.classList.remove('hidden'); document.getElementById('pageTitle').textContent=route.title; document.getElementById('pageDescription').textContent=route.description; document.getElementById('pageEyebrow').textContent=route.eyebrow; }
+            document.querySelectorAll('nav a, #mobileMenu a').forEach(link=>{ if(link.getAttribute('href')===location.pathname) link.classList.add('text-cyan-700','font-extrabold'); });
+            document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{
+                const id=link.getAttribute('href').slice(1);
+                const targetRoute=({about:'/',homeHero:'/',subjects:'/programs',vocational:'/programs',coaching:'/programs',library:'/library',relaxation:'/community',community:'/community',register:'/register',account:'/community',adminPanel:'/admin'})[id];
+                if(!targetRoute)return;
+                event.preventDefault();
+                if(targetRoute===location.pathname) document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+                else location.href=targetRoute+(id==='about'||id==='homeHero'?'':`#${id}`);
+            }));
+            renderSubjects();
+            loadBooks();
+            showQuote(0);
+            renderQuiz();
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Subject Search Listener
+            document.getElementById('subjectSearch').addEventListener('input', (e) => {
+                renderSubjects(e.target.value);
+            });
+
+            // Library Search & Filter Listeners
+            document.getElementById('librarySearch').addEventListener('input', renderLibrary);
+            document.getElementById('libraryFilter').addEventListener('change', renderLibrary);
+
+            // Quote Button
+            document.getElementById('nextQuoteBtn').addEventListener('click', () => {
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+                showQuote(currentQuoteIndex);
+            });
+
+            // Audio Play Button
+            document.getElementById('playAudioBtn').addEventListener('click', toggleFocusAudio);
+
+            // Book Request Form Handler
+            document.getElementById('bookRequestForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                document.getElementById('reqSuccessMsg').classList.remove('hidden');
+                document.getElementById('reqSuccessMsg').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                contactAdministrator(`WISD library request\nName: ${document.getElementById('reqName').value}\nPhone: ${document.getElementById('reqPhone').value}\nBook or topic: ${document.getElementById('reqTitle').value}\nNotes: ${document.getElementById('reqNotes').value || 'None'}`);
+            });
+
+            document.getElementById('memberForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const status = document.getElementById('memberStatus'); status.classList.remove('hidden'); status.textContent = 'Submitting…';
+                try {
+                    const phone = document.getElementById('memberPhone').value;
+                    const password=document.getElementById('memberPassword').value;
+                    if(password!==document.getElementById('memberPasswordConfirm').value) throw new Error('The passwords do not match.');
+                    await api('/api/register', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'member',name:document.getElementById('memberName').value,phone,password,transactionRef:document.getElementById('memberTransaction').value})});
+                    await api('/api/login', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,password})});
+                    status.textContent = 'Account and payment reference recorded. Your account becomes a member account after the administrator approves the payment.';
+                    document.getElementById('memberForm').reset(); await refreshAccount();
+                } catch(error) { status.textContent = error.message; }
+            });
+
+            document.getElementById('discussionForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const notice = document.getElementById('discussionNotice');
+                try { await api('/api/community',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:document.getElementById('discussionTopic').value,body:document.getElementById('discussionBody').value})}); e.target.reset(); notice.textContent='Posted to the member community.'; await loadCommunity(); }
+                catch(error) { notice.textContent=error.message; }
+            });
+
+            document.getElementById('loginForm').addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const button=document.getElementById('loginBtn'); const message=document.getElementById('loginMessage');
+                button.disabled=true; button.textContent='Signing in…'; message.textContent=''; message.className='text-sm text-slate-600 mt-3 min-h-5';
+                try {
+                    await api('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:document.getElementById('loginPhone').value,password:document.getElementById('loginPassword').value})});
+                    document.getElementById('loginPassword').value='';
+                    message.textContent='Signed in successfully.'; message.className='text-sm text-emerald-700 mt-3 min-h-5';
+                    await refreshAccount();
+                } catch(error) { message.textContent=error.message; message.className='text-sm text-rose-700 mt-3 min-h-5'; }
+                finally { button.disabled=false; button.textContent='Sign in'; }
+            });
+            document.querySelectorAll('.toggle-password').forEach(button=>button.addEventListener('click',()=>{
+                const input=document.getElementById(button.dataset.target); const showing=input.type==='password';
+                input.type=showing?'text':'password'; button.textContent=showing?'Hide':'Show'; button.setAttribute('aria-label',`${showing?'Hide':'Show'} password`);
+            }));
+            document.getElementById('logoutBtn').addEventListener('click', async () => { await api('/api/logout',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'}); document.getElementById('loginForm').reset(); document.getElementById('changePasswordForm').reset(); await refreshAccount(); });
+            document.getElementById('paymentRetryForm').addEventListener('submit', async (e) => { e.preventDefault(); try { const result=await api('/api/payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:document.getElementById('retryPaymentKind').value,transactionRef:document.getElementById('retryTransaction').value})}); document.getElementById('accountStatus').textContent=result.message; document.getElementById('paymentRetryForm').classList.add('hidden'); await refreshAccount(); } catch(error) { document.getElementById('accountStatus').textContent=error.message; } });
+            document.getElementById('changePasswordForm').addEventListener('submit', async (event) => {
+                event.preventDefault(); const message=document.getElementById('passwordMessage');
+                const newPassword=document.getElementById('newPassword').value;
+                if(newPassword!==document.getElementById('confirmPassword').value){message.textContent='The new passwords do not match.';message.className='sm:col-span-3 text-sm text-rose-700';return;}
+                try { const result=await api('/api/account/password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({currentPassword:document.getElementById('currentPassword').value,newPassword})});event.target.reset();message.textContent=result.message;message.className='sm:col-span-3 text-sm text-emerald-700';await refreshAccount(); }
+                catch(error){message.textContent=error.message;message.className='sm:col-span-3 text-sm text-rose-700';}
+            });
+
+            // Registration Form Handler
+            document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const fullName = document.getElementById('regFullName').value;
+                const phone = document.getElementById('regPhone').value;
+                const level = document.getElementById('regLevel').value;
+                const subject = document.getElementById('regSubject').value;
+                const mode = document.getElementById('regMode').value;
+                const password = document.getElementById('regPassword').value;
+                try {
+                if(password!==document.getElementById('regPasswordConfirm').value) throw new Error('The passwords do not match.');
+                const account = await api('/api/register', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:'student',name:fullName,phone,password,transactionRef:document.getElementById('regTransaction').value,email:document.getElementById('regEmail').value,program:subject,level,mode,goals:document.getElementById('regGoals').value})});
+                await api('/api/login', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone,password})});
+                const randomId = `WISD-${account.applicationId}`;
+                document.getElementById('recId').innerText = `#${randomId}`;
+                document.getElementById('recName').innerText = fullName;
+                document.getElementById('recPhone').innerText = phone;
+                document.getElementById('recLevel').innerText = level;
+                document.getElementById('recSubject').innerText = subject;
+                document.getElementById('recMode').innerText = mode;
+
+                document.getElementById('receiptCard').querySelector('.p-3 span').textContent = 'Your request and payment reference are recorded. The administrator will verify the payment manually before approving enrollment.';
+                document.getElementById('receiptCard').classList.remove('hidden');
+                document.getElementById('receiptCard').scrollIntoView({ behavior: 'smooth' });
+                await refreshAccount();
+                } catch(error) { alert(error.message); }
+            });
+
+            // Reset Registration Button
+            document.getElementById('resetRegBtn').addEventListener('click', () => {
+                document.getElementById('registrationForm').reset();
+                document.getElementById('receiptCard').classList.add('hidden');
+                document.getElementById('registrationForm').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            document.getElementById('uploadBookForm').addEventListener('submit', async (e) => {
+                e.preventDefault(); const status=document.getElementById('uploadStatus'); const file=document.getElementById('bookFile').files[0];
+                if (!file) return;
+                if (file.size > 15*1024*1024) { status.textContent='Choose a file under 15 MB.'; return; }
+                status.textContent='Uploading…';
+                try {
+                    const bytes=new Uint8Array(await file.arrayBuffer()); let binary='';
+                    for(let i=0;i<bytes.length;i+=0x8000) binary+=String.fromCharCode(...bytes.subarray(i,i+0x8000));
+                    const data=btoa(binary);
+                    await api('/api/admin/books',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title:document.getElementById('bookTitle').value,author:document.getElementById('bookAuthor').value,category:document.getElementById('bookCategory').value,description:document.getElementById('bookDescription').value,filename:file.name,data})});
+                    status.textContent='Resource published.'; e.target.reset(); await loadBooks(); await loadAdmin();
+                } catch(error) { status.textContent=error.message; }
+            });
+            document.getElementById('adminAddUserForm').addEventListener('submit', async (event) => {
+                event.preventDefault(); const status=document.getElementById('adminAddUserStatus'); status.textContent='Creating account…'; status.className='sm:col-span-2 text-sm text-slate-600';
+                try {
+                    const result=await api('/api/admin/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kind:document.getElementById('newUserKind').value,name:document.getElementById('newUserName').value,phone:document.getElementById('newUserPhone').value,transactionRef:document.getElementById('newUserTransaction').value,program:document.getElementById('newUserProgram').value,paymentVerified:document.getElementById('newUserPaymentVerified').checked})});
+                    status.textContent=result.message; status.className='sm:col-span-2 text-sm text-emerald-700';
+                    document.getElementById('createdSetupCode').value=result.setupCode; document.getElementById('setupCodeResult').classList.remove('hidden'); event.target.reset(); await loadAdmin();
+                } catch(error) { status.textContent=error.message; status.className='sm:col-span-2 text-sm text-rose-700'; }
+            });
+            document.getElementById('copySetupCode').addEventListener('click', async()=>{await navigator.clipboard.writeText(document.getElementById('createdSetupCode').value);document.getElementById('copySetupCode').textContent='Copied';});
+            document.getElementById('setPasswordForm').addEventListener('submit', async(event)=>{
+                event.preventDefault(); const status=document.getElementById('setupPasswordStatus');
+                const newPassword=document.getElementById('setupNewPassword').value;
+                if(newPassword!==document.getElementById('setupConfirmPassword').value){status.textContent='The passwords do not match.';status.className='text-sm text-rose-700';return;}
+                try { const result=await api('/api/account/setup-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:document.getElementById('setupPhone').value,setupCode:document.getElementById('setupCode').value,newPassword})});status.textContent=result.message;status.className='text-sm text-emerald-700';document.getElementById('setupSignInLink').classList.remove('hidden');event.target.reset(); }
+                catch(error){status.textContent=error.message;status.className='text-sm text-rose-700';}
+            });
+            refreshAccount();
+        });
+
+        async function loadBooks() {
+            try { libraryBooks=(await api('/api/books')).books; renderLibrary(); }
+            catch(error) { document.getElementById('bookGrid').innerHTML=`<p class="col-span-full text-amber-300 text-sm">Start the WISD server to use the online library: ${escapeHtml(error.message)}</p>`; }
+        }
+        async function loadCommunity() {
+            const box=document.getElementById('discussionPosts');
+            try { const data=await api('/api/community'); box.innerHTML=data.posts.map(post=>`<article class="glass-card p-5 rounded-xl"><h3 class="font-bold text-slate-900">${escapeHtml(post.title)}</h3><p class="text-sm text-slate-700 mt-2 whitespace-pre-wrap">${escapeHtml(post.body)}</p><p class="text-xs text-slate-500 mt-3">Posted by ${escapeHtml(post.name)} · ${new Date(post.created_at*1000).toLocaleDateString()}</p>${post.replies?.length?`<div class="mt-4 ml-3 border-l-2 border-cyan-300 pl-4 space-y-3">${post.replies.map(reply=>`<div><p class="text-sm text-slate-700 whitespace-pre-wrap">${escapeHtml(reply.body)}</p><p class="text-xs font-semibold text-cyan-800 mt-1">${escapeHtml(reply.name)} · ${new Date(reply.created_at*1000).toLocaleDateString()}</p></div>`).join('')}</div>`:''}</article>`).join('')||'<p class="text-sm text-slate-500">No discussions yet. Start one.</p>'; }
+            catch(error) { box.innerHTML=`<p class="text-sm text-slate-400">${escapeHtml(error.message)}</p>`; }
+        }
+        async function refreshAccount() {
+            try {
+                const {user}=await api('/api/session'); const status=document.getElementById('accountStatus');
+                document.getElementById('loginForm').classList.toggle('hidden',!!user);
+                document.getElementById('signedInPanel').classList.toggle('hidden',!user);
+                document.getElementById('accountNextStep').classList.toggle('hidden',!user);
+                document.getElementById('paymentRetryForm').classList.add('hidden');
+                if (!user) { document.getElementById('discussionForm').classList.add('hidden'); document.getElementById('discussionPosts').innerHTML=''; document.getElementById('adminPanel').classList.add('hidden'); return; }
+                const actionTitle=document.getElementById('accountNextTitle');
+                const actionDescription=document.getElementById('accountNextDescription');
+                const actionLink=document.getElementById('accountNextLink');
+                if(user.role==='admin') {
+                    status.textContent=`Signed in as ${user.name} · Administrator`;
+                    actionTitle.textContent='Administrator access is active';
+                    actionDescription.textContent='You can review enrollment requests and payment references, and manage library resources.';
+                    actionLink.textContent='Open administrator dashboard'; actionLink.href=currentPage==='admin'?'#adminPanel':'/admin#adminPanel';
+                } else if(user.role==='student') {
+                    status.textContent=`Signed in as ${user.name} · Enrolled student`;
+                    actionTitle.textContent='Student enrollment approved';
+                    actionDescription.textContent='Your enrollment is approved. Public library reading is open to everyone; paid downloads still need their own payment approval.';
+                    actionLink.textContent='View enrollment page'; actionLink.href='/register';
+                } else if(user.membershipStatus==='active') {
+                    status.textContent=`Signed in as ${user.name} · Approved member`;
+                    actionTitle.textContent='Member access is active';
+                    actionDescription.textContent='You can post ideas and read shared member discussions.';
+                    actionLink.textContent='Open member discussions'; actionLink.href=currentPage==='community'?'#community':'/community#community';
+                } else {
+                    status.textContent=`Signed in as ${user.name} · Application pending`;
+                    actionTitle.textContent='Your request is awaiting payment review';
+                    actionDescription.textContent='The administrator will approve access after checking your 100 RWF payment reference. Library reading remains open.';
+                    actionLink.textContent='View membership and enrollment'; actionLink.href='/register';
+                }
+                if(user.applicationStatus==='payment_rejected') { document.getElementById('paymentRetryForm').classList.remove('hidden'); document.getElementById('retryPaymentKind').value=user.applicationKind; }
+                if(user.role==='admin') { if(currentPage==='admin') document.getElementById('adminPanel').classList.remove('hidden'); else document.getElementById('adminPanel').classList.add('hidden'); await loadAdmin(); }
+                else if(user.membershipStatus==='active') { document.getElementById('discussionForm').classList.remove('hidden'); await loadCommunity(); }
+                else { document.getElementById('discussionForm').classList.add('hidden'); document.getElementById('discussionPosts').innerHTML='<p class="text-sm text-slate-400">Member discussions open after membership payment is approved.</p>'; }
+            } catch(error) { document.getElementById('accountStatus').textContent=error.message; }
+        }
+        async function loadAdmin() {
+            try {
+                const data=await api('/api/admin/overview'); const box=document.getElementById('adminPayments');
+                const discussionBox=document.getElementById('adminDiscussion');
+                discussionBox.innerHTML=data.posts.map(post=>`<article class="glass-card p-5 rounded-xl"><div class="flex justify-between gap-2"><h4 class="font-bold text-slate-900">${escapeHtml(post.title)}</h4><span class="text-xs text-slate-500">${new Date(post.created_at*1000).toLocaleDateString()}</span></div><p class="text-sm text-slate-700 mt-2 whitespace-pre-wrap">${escapeHtml(post.body)}</p><p class="text-xs text-slate-500 mt-2">From ${escapeHtml(post.name)}</p>${post.replies?.length?`<div class="mt-3 border-l-2 border-emerald-300 pl-3 space-y-2">${post.replies.map(reply=>`<p class="text-xs text-slate-600"><strong>Academy reply:</strong> ${escapeHtml(reply.body)}</p>`).join('')}</div>`:''}<form class="admin-reply-form mt-4 space-y-2" data-post-id="${post.id}"><textarea required maxlength="2000" rows="2" placeholder="Write a reply as Wisdom Science Academy…" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm"></textarea><button class="bg-cyan-700 hover:bg-cyan-800 text-white font-bold px-4 py-2 rounded-lg text-sm">Reply to member</button></form></article>`).join('')||'<p class="text-sm text-slate-500">No member discussions yet.</p>';
+                discussionBox.querySelectorAll('.admin-reply-form').forEach(form=>form.addEventListener('submit',async event=>{event.preventDefault();const button=form.querySelector('button');button.disabled=true;button.textContent='Sending…';try{await api('/api/admin/reply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({postId:Number(form.dataset.postId),body:form.querySelector('textarea').value})});await loadAdmin();}catch(error){button.disabled=false;button.textContent=error.message;}}));
+                const applicationsBox=document.getElementById('adminApplications');
+                applicationsBox.innerHTML=data.applications.map(item=>{let details={};try{details=JSON.parse(item.details)}catch{}return `<article class="glass-card p-4 rounded-xl"><div class="flex justify-between"><h3 class="font-bold text-white">${escapeHtml(item.name)} · ${escapeHtml(item.kind)}</h3><span class="text-xs text-amber-300">${escapeHtml(item.status)}</span></div><p class="text-xs text-slate-300 mt-2">${escapeHtml(item.phone)}${item.email?` · ${escapeHtml(item.email)}`:''}</p><p class="text-xs text-slate-400 mt-2">${escapeHtml(details.program||'Membership request')}${details.level?` · ${escapeHtml(details.level)}`:''}${details.mode?` · ${escapeHtml(details.mode)}`:''}</p><p class="text-xs text-slate-500 mt-1">${new Date(item.created_at*1000).toLocaleString()}</p>${item.setup_pending?`<button data-user-setup="${item.user_id}" class="issue-setup-code mt-3 bg-cyan-700 text-white px-3 py-2 rounded-lg text-xs font-bold">Issue password setup code</button>`:''}</article>`}).join('')||'<p class="text-sm text-slate-400">No enrollment requests yet.</p>';
+                applicationsBox.querySelectorAll('.issue-setup-code').forEach(button=>button.addEventListener('click',async()=>{try{const result=await api('/api/admin/setup-code',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({userId:Number(button.dataset.userSetup)})});document.getElementById('createdSetupCode').value=result.setupCode;document.getElementById('setupCodeResult').classList.remove('hidden');document.getElementById('setupCodeResult').scrollIntoView({behavior:'smooth',block:'center'});}catch(error){alert(error.message);}}));
+                const booksBox=document.getElementById('adminBooks');
+                booksBox.innerHTML=data.books.map(book=>`<article class="glass-card p-4 rounded-xl flex justify-between items-center gap-3"><div><h3 class="font-bold text-white">${escapeHtml(book.title)}</h3><p class="text-xs text-slate-400">${escapeHtml(book.author)} · ${escapeHtml(book.category)}</p></div><button data-book-delete="${book.id}" class="delete-book bg-rose-500 text-white px-3 py-1.5 rounded text-xs font-bold">Remove</button></article>`).join('')||'<p class="text-sm text-slate-400">No resources published yet.</p>';
+                booksBox.querySelectorAll('.delete-book').forEach(button=>button.addEventListener('click',async()=>{if(!confirm('Remove this resource and its download access?'))return;try{await api(`/api/admin/books/${button.dataset.book}`,{method:'DELETE'});await loadAdmin();await loadBooks();}catch(error){alert(error.message);}}));
+                box.innerHTML=data.payments.map(payment=>`<article class="glass-card p-4 rounded-xl"><div class="flex justify-between gap-2"><h3 class="font-bold text-white">${escapeHtml(payment.name)} · ${escapeHtml(payment.kind)}</h3><span class="text-xs text-amber-300">${escapeHtml(payment.status)}</span></div><p class="text-xs text-slate-300 mt-2">${escapeHtml(payment.phone)} · 100 RWF · Ref ${escapeHtml(payment.transaction_ref)}${payment.target_id?` · resource ${payment.target_id}`:''}</p><p class="text-xs text-slate-500 mt-1">${new Date(payment.created_at*1000).toLocaleString()}</p>${payment.status==='pending'?`<div class="flex gap-2 mt-3"><button data-payment="${payment.id}" data-status="approved" class="review-payment bg-emerald-500 text-slate-950 px-3 py-1.5 rounded text-xs font-bold">Approve</button><button data-payment="${payment.id}" data-status="rejected" class="review-payment bg-rose-500 text-white px-3 py-1.5 rounded text-xs font-bold">Reject</button></div>`:''}</article>`).join('')||'<p class="text-sm text-slate-400">No payment references submitted.</p>';
+                box.querySelectorAll('.review-payment').forEach(button=>button.addEventListener('click',async()=>{try{await api('/api/admin/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({paymentId:Number(button.dataset.payment),status:button.dataset.status})});await loadAdmin();await loadBooks();}catch(error){alert(error.message);}}));
+            } catch(error) { document.getElementById('adminPayments').textContent=error.message; }
+        }
+    </script>
+</body>
+</html>
